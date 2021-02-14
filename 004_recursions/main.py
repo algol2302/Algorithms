@@ -25,21 +25,28 @@ def recursive_max(arr: list) -> int:
     return rest if rest > arr[0] else arr[0]
 
 
+def quick_sort(arr: list):
+    if len(arr) < 2:
+        return arr
+    else:
+        pivot = arr[0]
+        less = [i for i in arr[1:] if i <= pivot]
+        greater = [i for i in arr[1:] if i > pivot]
+        return quick_sort(arr=less) + [pivot] + quick_sort(arr=greater)
+
+
 if __name__ == '__main__':
     init_arr = [random.randint(0, 1000) for _ in range(10)]
 
     total_sum = recursive_sum(init_arr)
-    check_sum = sum(init_arr)
-
     total_count = recursive_count(init_arr)
-    check_count = len(init_arr)
-
     max_value = recursive_max(init_arr)
-    max_check = max(init_arr)
+    q_sorted = quick_sort(init_arr)
 
     print(
-        f"Initial values: {init_arr}\n"
-        f"Sum: {total_sum}\t\tcheck: {total_sum == check_sum}\n"
-        f"Count: {total_count}\t\tcheck: {total_count == check_count}\n"
-        f"Max: {max_value}\t\tcheck: {max_value == max_check}\n"
+        f"Initial values:\t{init_arr}\n"
+        f"Sorted:\t\t\t{q_sorted} check: {q_sorted == sorted(init_arr)}\n"
+        f"Sum: {total_sum}\t\tcheck: {total_sum == sum(init_arr)}\n"
+        f"Count: {total_count}\t\tcheck: {total_count == len(init_arr)}\n"
+        f"Max: {max_value}\t\tcheck: {max_value == max(init_arr)}\n"
     )
