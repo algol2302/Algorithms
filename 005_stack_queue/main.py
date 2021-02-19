@@ -17,14 +17,14 @@ class Stack:
         self.values.extend(*args)
 
     def pop(self) -> Any:
-        return self.values.pop(0)
+        return self.values.pop(-1)
 
 
 class Queue(Stack):
     """FIFO - first in first out"""
 
     def pop(self) -> Any:
-        return self.values.pop(-1)
+        return self.values.pop(0)
 
 
 def check_stack():
