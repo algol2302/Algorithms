@@ -20,25 +20,30 @@ def longestPalindrome_0(s: str) -> str:
 
 def longestPalindrome(s: str) -> str:
     """Optimized solution"""
+    length_s = len(s)
 
-    # TODO optimize it )
+    if length_s == 1:
+        return s[0]
 
-    palindrom = ''
-    items = {}
+    if length_s == 2:
+        if s[0] == s[1]:
+            return s
+        return s[0]
 
-    for i, char_i in enumerate(s):
-        current = char_i
+    max_length = 1
+    items = {s[0]: 1}
 
-        if len(palindrom) < len(current) and current == current[::-1]:
-            palindrom = current
+    for i in range(0, length_s):
+        current = s[i]
 
-        for j, char_j, in enumerate(s[i+1:]):
+        for j, char_j in enumerate(s[i+1:]):
             current += char_j
+            length_current = len(current)
 
-            if len(palindrom) < len(current) and current == current[::-1]:
-                palindrom = current
+            if not items.get(current) and max_length < length_current and current == current[::-1]:
+                max_length, items[current] = length_current, current
 
-    return palindrom
+    return items.popitem()[0]
 
 
 def main():
