@@ -40,8 +40,11 @@ def longestPalindrome(s: str) -> str:
             current += char_j
             length_current = len(current)
 
-            if not items.get(current) and max_length < length_current and current == current[::-1]:
-                max_length, items[current] = length_current, current
+            try:
+                items[current]
+            except KeyError:
+                if max_length < length_current and current == current[::-1]:
+                    max_length, items[current] = length_current, current
 
     return items.popitem()[0]
 
