@@ -127,15 +127,16 @@ def longestPalindrome_4(s: str) -> str:
 def longestPalindrome(s: str) -> str:
     """Optimized solution 5 from leetcode"""
 
+    length = len(s)
+
     def get_max_len(string: str, left: int, right: int) -> int:
-        _length = len(string)
-        while left >= 0 and right < _length and string[left] == string[right]:
+        while left >= 0 and right < length and string[left] == string[right]:
             left -= 1
             right += 1
         return right - left - 1
 
     start = end = 0
-    length = len(s)
+
     for i in range(length):
         max_len_1 = get_max_len(s, i, i + 1)
         max_len_2 = get_max_len(s, i, i)
