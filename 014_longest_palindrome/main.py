@@ -124,7 +124,7 @@ def longestPalindrome_4(s: str) -> str:
     return s[i:b]
 
 
-def longestPalindrome(s: str) -> str:
+def longestPalindrome_5(s: str) -> str:
     """Optimized solution 5 from leetcode"""
 
     length = len(s)
@@ -145,6 +145,28 @@ def longestPalindrome(s: str) -> str:
             start = i - (max_len - 1) // 2
             end = i + max_len // 2
     return s[start: end + 1]
+
+
+def longestPalindrome(s: str) -> str:
+    """Training of idea of optimized solution 5"""
+
+    length = len(s)
+
+    def _get_max_length(left: int, right: int) -> int:
+        while left >= 0 and right < length and s[left] == s[right]:
+            right += 1
+            left -= 1
+        return right - left - 1
+
+    start = finish = 0
+
+    for i in range(length):
+        max_len = max(_get_max_length(i, i+1), _get_max_length(i, i))
+        if max_len > finish - start + 1:
+            start = i - (max_len - 1) // 2
+            finish = i + max_len // 2
+
+    return s[start:finish+1]
 
 
 def main():
