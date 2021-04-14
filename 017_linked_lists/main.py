@@ -3,6 +3,9 @@ class Node:
         self.data = data
         self.next_node = None
 
+    def __repr__(self):
+        return f"Node with data: {self.data!r}"
+
 
 class LinkedList:
 
