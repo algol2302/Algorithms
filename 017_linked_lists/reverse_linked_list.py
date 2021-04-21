@@ -1,4 +1,4 @@
-from main import LinkedList, Node
+from main import LinkedList
 
 
 class LinkedListWithReverse(LinkedList):
@@ -17,8 +17,12 @@ class LinkedListWithReverse(LinkedList):
         previous_node = None
 
         while current_node:
-            next_node, current_node.next_node = current_node.next_node, previous_node
-            previous_node, current_node = current_node, next_node
+            # remember next node for iterating
+            next_node = current_node.next_node
+            # swap nodes
+            current_node.next_node, previous_node = previous_node, current_node
+            # move to the next node
+            current_node = next_node
 
         self.head = previous_node
 
