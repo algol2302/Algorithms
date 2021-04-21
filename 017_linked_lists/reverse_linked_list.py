@@ -13,16 +13,14 @@ class LinkedListWithReverse(LinkedList):
         return _linked_list
 
     def reverse(self) -> None:
-        # TODO finish in-place solution
-        # start_index = 0
-        # end_index = len(self.number_of_nodes) - 1
+        current_node = self.head
+        previous_node = None
 
-        actual_node = self.head
+        while current_node:
+            next_node, current_node.next_node = current_node.next_node, previous_node
+            previous_node, current_node = current_node, next_node
 
-        while actual_node.next_node:
-            actual_node.data, actual_node.next_node.data = actual_node.next_node.data, actual_node.data
-
-            actual_node = actual_node.next_node
+        self.head = previous_node
 
 
 def main():
