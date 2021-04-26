@@ -3,6 +3,8 @@
 class Stack:
     def __init__(self):
         self.stack = []
+        # TODO finish algorithm with max value in the stack
+        self.max_stack = []
 
     def __repr__(self):
         return f"Stack: {self.stack!r}, size :{self.stack_size()}"
