@@ -12,7 +12,16 @@ class Node:
         self.height = 0
 
     def __repr__(self):
-        return f"Node with data: {self.data!r}"
+        return f"node with data: {self.data!r}"
+
+    def all_data(self):
+        return (
+            f"Node with data: {self.data}, "
+            f"Left {self.left_child}, "
+            f"Parent {self.parent}, "
+            f"Right {self.right_child}, "
+            f"Height: {self.height}"
+        )
 
 
 class AVLTree:
@@ -180,27 +189,115 @@ class AVLTree:
         return self.calculate_height(node.left_child) - self.calculate_height(node.right_child)
 
     def rotate_left(self, node: Node):
-        pass
+        print(f"Rotating to the left on {node}")
+
+        temp_right_child = node.right_child
+        t = temp_right_child.left_child
+
+        temp_right_child.left_child = node
+        node.right_child = t
+
+        # update parents
+        if t:
+            t.parent = node
+
+        node.parent, temp_right_child.parent = temp_right_child, node.parent
+
+        # update childs for ex parent of the node
+        if temp_right_child.parent and temp_right_child.parent.left_child == node:
+            temp_right_child.parent.left_child = temp_right_child
+
+        if temp_right_child.parent and temp_right_child.parent.right_child == node:
+            temp_right_child.parent.right_child = temp_right_child
+
+        # case node is root
+        if node == self.root:
+            self.root = temp_right_child
+
+        # recalculate heights
+        node.height = max(
+            self.calculate_height(node.left_child),
+            self.calculate_height(node.right_child)
+        ) + 1
+        temp_right_child.height = max(
+            self.calculate_height(temp_right_child.left_child),
+            self.calculate_height(temp_right_child.right_child)
+        ) + 1
 
     def rotate_right(self, node: Node):
-        pass
+        print(f"Rotating to the right on {node}")
+
+        temp_left_child = node.left_child
+        t = temp_left_child.right_child
+
+        temp_left_child.right_child = node
+        node.left_child = t
+
+        # update parents
+        if t:
+            t.parent = node
+
+        node.parent, temp_left_child.parent = temp_left_child, node.parent
+
+        # update childs for ex parent of the node
+        if temp_left_child.parent and temp_left_child.parent.left_child == node:
+            temp_left_child.parent.left_child = temp_left_child
+
+        if temp_left_child.parent and temp_left_child.parent.right_child == node:
+            temp_left_child.parent.right_child = temp_left_child
+
+        # update root
+        if node == self.root:
+            self.root = temp_left_child
+
+        # recalculate heights
+        node.height = max(
+            self.calculate_height(node.left_child),
+            self.calculate_height(node.right_child)
+        ) + 1
+        temp_left_child.height = max(
+            self.calculate_height(temp_left_child.left_child),
+            self.calculate_height(temp_left_child.right_child)
+        ) + 1
+
+    def traverse(self) -> None:
+        if self.root:
+            self.traverse_in_order(self.root)
+
+    def traverse_in_order(self, node: Node) -> None:
+
+        # first left child
+        if node.left_child:
+            self.traverse_in_order(node.left_child)
+
+        # second parent node
+        print(node.all_data())
+
+        # third right child
+        if node.right_child:
+            self.traverse_in_order(node.right_child)
 
 
 def main():
-    bst = AVLTree()
-    bst.insert(10)
-    bst.insert(5)
-    bst.insert(-5)
-    bst.insert(1)
-    bst.insert(99)
-    bst.insert(34)
-    bst.insert(1000)
-
-    bst.remove(99)
-
-    print(f"Max value: {bst.get_max_value()}")
-    print(f"Min value: {bst.get_min_value()}")
-    bst.traverse()
+    avl = AVLTree()
+    avl.insert(5)
+    # 1. left-right unbalanced tree:
+    # avl.insert(3)
+    # avl.insert(4)
+    # 2. right-left unbalanced tree:
+    # avl.insert(8)
+    # avl.insert(6)
+    # 3. balanced tree
+    avl.insert(3)
+    avl.insert(10)
+    avl.insert(2)
+    avl.insert(4)
+    avl.insert(15)
+    # 4. removing
+    avl.remove(15)
+    avl.remove(10)
+    # show
+    avl.traverse()
 
 
 if __name__ == '__main__':
