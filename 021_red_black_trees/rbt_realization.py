@@ -44,10 +44,6 @@ class RedBlackTree:
                 node.right_node = Node(data, node)
                 self.settle_violation(node.right_node)
 
-    def settle_violation(self, node: Node):
-        # TODO
-        pass
-
     def traverse(self):
         if self.root:
             self.in_order_traversal(self.root)
@@ -61,6 +57,83 @@ class RedBlackTree:
 
         if node.right_node:
             self.in_order_traversal(node.right_node)
+
+    def rotate_right(self, node: Node):
+        print(f"Rotating to the right on node {node.data}")
+
+        temp_left_node = node.left_node
+        t = temp_left_node.right_node
+
+        temp_left_node.right_node = node
+        node.left_node = t
+
+        # update parents
+        if t:
+            t.parent = node
+
+        node.parent, temp_left_node.parent = temp_left_node, node.parent
+
+        # update childs for ex parent of the node
+        if temp_left_node.parent and temp_left_node.parent.left_node == node:
+            temp_left_node.parent.left_node = temp_left_node
+
+        if temp_left_node.parent and temp_left_node.parent.right_node == node:
+            temp_left_node.parent.right_node = temp_left_node
+
+        # update root
+        if node == self.root:
+            self.root = temp_left_node
+
+    def rotate_left(self, node: Node):
+        print(f"Rotating to the left on node {node.data}")
+
+        temp_right_node = node.right_node
+        t = temp_right_node.left_node
+
+        temp_right_node.left_node = node
+        node.right_node = t
+
+        # update parents
+        if t:
+            t.parent = node
+
+        node.parent, temp_right_node.parent = temp_right_node, node.parent
+
+        # update childs for ex parent of the node
+        if temp_right_node.parent and temp_right_node.parent.left_node == node:
+            temp_right_node.parent.left_node = temp_right_node
+
+        if temp_right_node.parent and temp_right_node.parent.right_node == node:
+            temp_right_node.parent.right_node = temp_right_node
+
+        # update root
+        if node == self.root:
+            self.root = temp_right_node
+
+    def settle_violation(self, node: Node):
+
+        while node != self.root and self.is_red(node) and self.is_red(node.parent):
+            parent_node = node.parent
+            grand_parent_node = parent_node.parent
+
+            # parent is a left child of it's parent (so the grandparent)
+            if parent_node == grand_parent_node.left_node:
+                uncle = grand_parent_node.right_node
+
+                # case 1.) and case 4.) RECOLORING
+                if uncle and self.is_red(uncle):
+                    print(f"Re-coloring node {grand_parent_node.data} to Red")
+                    grand_parent_node.color = Color.RED
+                    parent_node.color = Color.BLACK
+                    uncle.color = Color.BLACK
+                    node = grand_parent_node
+                    # TODO continue from this
+
+
+    def is_red(self, node: Node):
+        if node:
+            return False
+        return node.color == Color.RED
 
 
 def main():
