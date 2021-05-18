@@ -120,15 +120,54 @@ class RedBlackTree:
             if parent_node == grand_parent_node.left_node:
                 uncle = grand_parent_node.right_node
 
-                # case 1.) and case 4.) RECOLORING
                 if uncle and self.is_red(uncle):
+                    # case 1.) and case 4.) RECOLORING
                     print(f"Re-coloring node {grand_parent_node.data} to Red")
                     grand_parent_node.color = Color.RED
                     parent_node.color = Color.BLACK
                     uncle.color = Color.BLACK
                     node = grand_parent_node
-                    # TODO continue from this
+                else:
+                    # case 2. uncle node is black and node is a right child
+                    if node == parent_node.right_node:
+                        self.rotate_left(parent_node)
+                        node, parent_node = parent_node, node.parent
 
+                    # case 3. rotation on the grandparent + parent and
+                    # grandparent switch color
+                    parent_node.color = Color.BLACK
+                    grand_parent_node.color = Color.RED
+                    print(f"Re-coloring node {parent_node.data} to Black")
+                    print(f"Re-coloring node {grand_parent_node.data} to Red")
+                    self.rotate_right(grand_parent_node)
+
+            else:
+                uncle = grand_parent_node.left_node
+
+                if uncle and self.is_red(uncle):
+                    # case 1.) and case 4.) RECOLORING
+                    print(f"Re-coloring node {grand_parent_node.data} to Red")
+                    grand_parent_node.color = Color.RED
+                    parent_node.color = Color.BLACK
+                    uncle.color = Color.BLACK
+                    node = grand_parent_node
+                else:
+                    # case 2. uncle node is black and node is a right child
+                    if node == parent_node.left_node:
+                        self.rotate_right(parent_node)
+                        node, parent_node = parent_node, node.parent
+
+                    # case 3. rotation on the grandparent + parent and
+                    # grandparent switch color
+                    parent_node.color = Color.BLACK
+                    grand_parent_node.color = Color.RED
+                    print(f"Re-coloring node {parent_node.data} to Black")
+                    print(f"Re-coloring node {grand_parent_node.data} to Red")
+                    self.rotate_left(grand_parent_node)
+
+        if self.is_red(self.root):
+            print(f"Re-coloring the root {self.root.data} to Black")
+            self.root.color = Color.BLACK
 
     def is_red(self, node: Node):
         if node:
