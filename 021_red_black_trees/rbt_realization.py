@@ -26,6 +26,7 @@ class RedBlackTree:
     def insert(self, data: Number):
         if not self.root:
             self.root = Node(data)
+            self.settle_violation(self.root)
         else:
             self.insert_node(data, self.root)
 
@@ -59,7 +60,7 @@ class RedBlackTree:
             self.in_order_traversal(node.right_node)
 
     def rotate_right(self, node: Node):
-        print(f"Rotating to the right on node {node.data}")
+        print(f"Rotating to the right on {node}")
 
         temp_left_node = node.left_node
         t = temp_left_node.right_node
@@ -85,7 +86,7 @@ class RedBlackTree:
             self.root = temp_left_node
 
     def rotate_left(self, node: Node):
-        print(f"Rotating to the left on node {node.data}")
+        print(f"Rotating to the left on {node}")
 
         temp_right_node = node.right_node
         t = temp_right_node.left_node
@@ -131,7 +132,8 @@ class RedBlackTree:
                     # case 2. uncle node is black and node is a right child
                     if node == parent_node.right_node:
                         self.rotate_left(parent_node)
-                        node, parent_node = parent_node, node.parent
+                        node = parent_node
+                        parent_node = node.parent
 
                     # case 3. rotation on the grandparent + parent and
                     # grandparent switch color
@@ -148,6 +150,7 @@ class RedBlackTree:
                     # case 1.) and case 4.) RECOLORING
                     print(f"Re-coloring node {grand_parent_node.data} to Red")
                     grand_parent_node.color = Color.RED
+                    print(f"Re-coloring node {parent_node.data} to Black")
                     parent_node.color = Color.BLACK
                     uncle.color = Color.BLACK
                     node = grand_parent_node
@@ -155,7 +158,8 @@ class RedBlackTree:
                     # case 2. uncle node is black and node is a right child
                     if node == parent_node.left_node:
                         self.rotate_right(parent_node)
-                        node, parent_node = parent_node, node.parent
+                        node = parent_node
+                        parent_node = node.parent
 
                     # case 3. rotation on the grandparent + parent and
                     # grandparent switch color
@@ -170,14 +174,22 @@ class RedBlackTree:
             self.root.color = Color.BLACK
 
     def is_red(self, node: Node):
-        if node:
+        if not node:
             return False
         return node.color == Color.RED
 
 
 def main():
-    a = Node(1)
-    print(a)
+    tree = RedBlackTree()
+    tree.insert(32)
+    tree.insert(10)
+    tree.insert(55)
+    tree.insert(1)
+    tree.insert(19)
+    tree.insert(79)
+    tree.insert(16)
+    tree.insert(23)
+    tree.insert(12)
 
 
 if __name__ == '__main__':
