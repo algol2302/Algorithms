@@ -11,6 +11,7 @@ class Heap:
         self.heap = [0] * CAPACITY
 
     def insert(self, item):
+        """O(logN) time complexity"""
 
         # when the heap is full
         if self.heap_size == CAPACITY:
@@ -45,6 +46,7 @@ class Heap:
         """
         return max and remove it as well
         remove root node of the heap
+        O(logN) time complexity
         """
         max_item = self.get_max()
 
@@ -85,7 +87,8 @@ class Heap:
             self.fix_down(largest_index)
 
     def heap_sort(self):
-
+        # we consider N items - it takes O(logN) to get max (poll function)
+        # N * O(logN) = O(NlogN)
         for _ in range(self.heap_size):
             max_item = self.poll()
             print(max_item)
