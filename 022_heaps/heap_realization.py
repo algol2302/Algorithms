@@ -1,8 +1,8 @@
 CAPACITY = 10
 
 
-# maximum heap (root node is the largest item)
 class Heap:
+    """Maximum heap (root node is the largest item)"""
 
     def __init__(self):
         # this is the actual number of items in the data structure
@@ -34,8 +34,7 @@ class Heap:
         # we consider all the items above till we hit the root node
         # if heap property is violated then we swap the parent-child
         if index > 0 and self.heap[index] > self.heap[parent_index]:
-            self.heap[index], self.heap[parent_index] = \
-                self.heap[parent_index], self.heap[index]
+            self.heap[index], self.heap[parent_index] = self.heap[parent_index], self.heap[index]
             self.fix_up(parent_index)
 
     def get_max(self):
@@ -50,15 +49,15 @@ class Heap:
         max_item = self.get_max()
 
         # swap max item with the last item and "heapify":
-        self.heap[0], self.heap[self.heap_size - 1] = \
-            self.heap[self.heap_size - 1], self.heap[0]
+        self.heap[0], self.heap[self.heap_size - 1] = self.heap[self.heap_size - 1], self.heap[0]
+        self.heap_size -= 1
 
         # make sure that the heap is "heapify"
-        self.fix_down(self.heap[0])
+        self.fix_down(0)
 
         return max_item
 
-    def fix_dowm(self, index: int):
+    def fix_down(self, index: int):
         """
         starting with the root node downwards
         until the heap properties are no longer violated - O(logN)
@@ -71,26 +70,38 @@ class Heap:
         largest_index = index
 
         # looking for the largest (parent or left node)
-        if left_index < self.heap_size and \
-                self.heap[left_index] > self.heap[index]:
+        if left_index < self.heap_size and self.heap[left_index] > self.heap[index]:
             largest_index = left_index
 
         # if the right child is greater than the left child:
         # largest us the right child
-        if right_index > self.heap_size and \
-                self.heap[right_index] > self.heap[index]:
+        if right_index < self.heap_size and self.heap[right_index] > self.heap[largest_index]:
             largest_index = right_index
 
         # if the parent is larger than the children: it's a valid heap
         # so we terminate the recursive function calls
         if index != largest_index:
-            self.heap[index], self.heap[largest_index] = \
-                self.heap[largest_index], self.heap[index]
-            self.fix_dowm(largest_index)
+            self.heap[index], self.heap[largest_index] = self.heap[largest_index], self.heap[index]
+            self.fix_down(largest_index)
+
+    def heap_sort(self):
+
+        for _ in range(self.heap_size):
+            max_item = self.poll()
+            print(max_item)
 
 
 def main():
-    pass
+    heap = Heap()
+    heap.insert(13)
+    heap.insert(-2)
+    heap.insert(0)
+    heap.insert(8)
+    heap.insert(1)
+    heap.insert(-5)
+    heap.insert(99)
+
+    heap.heap_sort()
 
 
 if __name__ == '__main__':
