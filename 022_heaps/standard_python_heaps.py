@@ -24,5 +24,6 @@ def main():
 
     print(heap2)
 
+
 if __name__ == '__main__':
     main()
