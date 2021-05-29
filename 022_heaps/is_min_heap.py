@@ -40,6 +40,5 @@ def main():
     assert is_min_heap_optimized(is_not_min_heap) == False
 
 
-
 if __name__ == '__main__':
     main()
