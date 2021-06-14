@@ -1,49 +1,88 @@
 """Using BFS to find way out of maze"""
 
-
-class Node:
-
-    def __init__(self, index_x, index_y):
-        self.index_x = index_x
-        self.index_y = index_y
-        self.adjacency_list = []
-        self.visited = False
-
-    def __repr__(self):
-        return f"({self.index_x!r}, {self.index_y!r})"
+from collections import deque
 
 
-def breadth_first_search(start_node):
-    # FIFO
-    queue = [start_node]
+class MazeSolver:
 
-    # we keep iterating (considering the neighbours) until the queue
-    # becomes empty
-    while queue:
-        actual_node = queue.pop(0)
-        print(actual_node)
+    def __init__(self, matrix):
+        self.matrix = matrix
+        # R(1,0) D(0,-1) U(0,1) L(-1,0)
+        self.move = ((1, 0), (0, -1), (0, 1), (-1, 0))
+        self.visited = [[False for _ in range(len(matrix))] for _ in range(len(matrix))]
+        self.min_distance = float('inf')
 
-        # let's consider the neighbours of the actual node one by one:
-        for node in actual_node.adjacency_list:
-            if not node.visited:
-                queue.append(node)
+    def is_valid(self, row, col):
 
+        # outside the table horizontally
+        if row < 0 or row >= len(self.matrix):
+            return False
 
-def main():
-    # start and destination points:
-    start = (0, 0)
-    destination = (4, 4)
+        # outside the table vertically
+        if col < 0 or col >= len(self.matrix):
+            return False
 
-    # maze:
-    maze = [
-        [1, 1, 1, 1, 1],
-        [0, 1, 1, 1, 1],
-        [0, 0, 0, 0, 1],
-        [1, 0, 1, 1, 1],
-        [0, 0, 0, 1, 1]
-    ]
-    # TODO finish it
+        # obstacle (wall)
+        if self.matrix[row][col] == 0:
+            return False
+
+        # already visited the given cell
+        if self.visited[row][col]:
+            return False
+
+        return True
+
+    def search(self, i, j, destination_x, destination_y):
+
+        self.visited[i][j] = True
+        # the queue is implemented with a doubly linked list - O(1)
+        queue = deque()
+        # i is the x coordinate
+        # j is the y coordinate
+        # why 0? of course because in the first iteration the min_distance is 0
+        queue.append((i, j, 0))
+
+        while queue:
+
+            # we take the first item we have inserted
+            (i, j, dist) = queue.popleft()
+            # print((i, j))
+            # if we have reached the destination - we break out of the while loop becase
+            # we have found the destination !!!
+            if i == destination_x and j == destination_y:
+                self.min_distance = dist
+                break
+
+            # we are at the location (i,j) we have to make a given move
+            # R, D, U, L
+            for move_x, move_y in self.move:
+                # we calculate the position ofter the move
+                next_x, next_y = i + move_x, j + move_y
+
+                # is it possible to make the move to cell with coordinates (next_x, next_y)?
+                if self.is_valid(next_x, next_y):
+                    # we make the given move (BFS)
+                    self.visited[next_x][next_y] = True
+                    # we append the move to the queue
+                    queue.append((next_x, next_y, dist + 1))
+
+    def show_result(self):
+        if self.min_distance != float('inf'):
+            print("The shortest path from source to destination: ", self.min_distance)
+        else:
+            print("No feasible solution - the destination can not be reached!")
 
 
 if __name__ == '__main__':
-    main()
+
+    m = [
+        [1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1],
+        [1, 0, 0, 0, 0],
+        [1, 1, 1, 1, 1]
+    ]
+
+    maze_solver = MazeSolver(m)
+    maze_solver.search(0, 0, 4, 4)
+    maze_solver.show_result()
