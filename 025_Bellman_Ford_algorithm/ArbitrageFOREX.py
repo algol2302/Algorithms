@@ -46,8 +46,9 @@ class BellmanFord(object):
 
         for edge in self.edge_list:
             if self.check_cycle(edge):
-                print("Negative cycle detected...")
+                # It's the solution:
 
+                print("Negative cycle detected...")
                 vertex = edge.start_vertex
 
                 while vertex is not edge.target_vertex:
