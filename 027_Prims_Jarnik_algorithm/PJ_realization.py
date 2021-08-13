@@ -2,7 +2,6 @@ import heapq
 from typing import TypeVar
 
 E = TypeVar("E", bound="Edge")
-N = TypeVar("N", bound="Node")
 
 
 class Vertex:
