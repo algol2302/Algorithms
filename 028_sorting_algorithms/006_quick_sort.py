@@ -1,9 +1,6 @@
-from typing import Sized
-
-
 class QuickSort:
 
-    def __init__(self, data: Sized):
+    def __init__(self, data):
         self.data = data
 
     def sort(self):
