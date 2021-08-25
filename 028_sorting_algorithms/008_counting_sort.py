@@ -20,10 +20,9 @@ class CountingSort:
                 self.count_array[i - min(self.data)] -= 1
 
 def main():
-    # it has O(NxLogN) running time and additional O(N) memory
+    # it has O(N+k) running time and additional O(k) memory
     algorithm = CountingSort([1, -1, 0, 10, 12, -5, 1, 2, -1, 34])
     algorithm.sort()
-    [1, -1, 0, 10, 12, -5, 1, 2, -1, 34].sort()
     print(algorithm.data)
 
 
