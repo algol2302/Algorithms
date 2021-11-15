@@ -10,7 +10,7 @@ class Solution:
         return max_sum
 
 def main():
-    items = [1]
+    items = [1, 2, 3, 4, 5]
     print(Solution().algorithm(items=items))
 
 
