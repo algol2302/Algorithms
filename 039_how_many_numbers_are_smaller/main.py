@@ -34,7 +34,7 @@ class Solution:
             counter = 0
             for j in nums:
                 if i != j and i > j:
-                    counter +=1
+                    counter += 1
             res.append(counter)
 
         return res
@@ -68,12 +68,12 @@ class Solution:
 
 def main():
     for item, want in (
-        ([8,1,2,2,3], [4,0,1,1,3]),
-        ([6,5,4,8], [2,1,0,3]),
-        ([7,7,7,7], [0,0,0,0])
+        ([8, 1, 2, 2, 3], [4, 0, 1, 1, 3]),
+        ([6, 5, 4, 8], [2, 1, 0, 3]),
+        ([7, 7, 7, 7], [0, 0, 0, 0]),
     ):
         print(Solution().smallerNumbersThanCurrent_2(item), "==", want)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
