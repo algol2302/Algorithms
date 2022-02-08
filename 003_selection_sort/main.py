@@ -23,7 +23,7 @@ def selection_sort(arr: list) -> list:
     return new_arr
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     rand_arr = [random.randint(0, 10) for i in range(10)]
     print(f"Random array:\t{rand_arr}")
     ordered_arr = selection_sort(rand_arr)

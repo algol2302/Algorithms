@@ -4,7 +4,6 @@ ITEMS_IN_BUCKET = 10
 
 
 class RadixSort:
-
     def __init__(self, data):
         self.data = data
 
@@ -17,7 +16,7 @@ class RadixSort:
         # store the count of each element in count array O(N)
         for num in self.data:
             # calculate index of the given bucket
-            index = (num // (10 ** d)) % 10
+            index = (num // (10**d)) % 10
             count_array[index].append(num)
 
         # we have to consider all the items in the count array (list)
@@ -32,6 +31,7 @@ class RadixSort:
         for digit in range(self.get_digits()):
             self.counting_sort(digit)
 
+
 def main():
     # [1, -1, 0, 10, 12, -5, 1, 2, -1, 34]
     n = [5, 3, 10, 12, 9, 8, 20, 100, 325, 1023]
@@ -42,5 +42,5 @@ def main():
     print(algorithm.data)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

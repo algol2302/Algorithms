@@ -1,5 +1,4 @@
 class Node:
-
     def __init__(self, name: str) -> None:
         self.name = name
         self.adjacency_list = []
@@ -58,5 +57,5 @@ def main():
     depth_first_search_with_recursion(node1)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

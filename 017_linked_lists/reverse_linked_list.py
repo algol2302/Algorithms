@@ -32,7 +32,7 @@ def main():
     linked_list = LinkedListWithReverse()
     linked_list.insert_start(4)
     linked_list.insert_start(3.2)
-    linked_list.insert_start('Test')
+    linked_list.insert_start("Test")
     linked_list.insert_end(10)
     linked_list.insert_end(100)
     linked_list.insert_end(1000)
@@ -41,10 +41,10 @@ def main():
     # print('-------------------------')
     # new_linked_list = linked_list.brute_force_reverse()
     # new_linked_list.traverse()
-    print('-------------------------')
+    print("-------------------------")
     linked_list.reverse()
     linked_list.traverse()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

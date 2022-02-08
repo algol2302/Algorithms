@@ -23,7 +23,7 @@ class Solution:
     def runningSum(self, nums: List[int]) -> List[int]:
         res = [nums[0]]
         for index in range(1, len(nums)):
-            res.append(res[index-1] + nums[index])
+            res.append(res[index - 1] + nums[index])
         return res
 
 
@@ -33,5 +33,5 @@ def main():
     print(solution.runningSum(nums))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

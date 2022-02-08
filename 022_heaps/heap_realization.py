@@ -35,7 +35,10 @@ class Heap:
         # we consider all the items above till we hit the root node
         # if heap property is violated then we swap the parent-child
         if index > 0 and self.heap[index] > self.heap[parent_index]:
-            self.heap[index], self.heap[parent_index] = self.heap[parent_index], self.heap[index]
+            self.heap[index], self.heap[parent_index] = (
+                self.heap[parent_index],
+                self.heap[index],
+            )
             self.fix_up(parent_index)
 
     def get_max(self):
@@ -51,7 +54,10 @@ class Heap:
         max_item = self.get_max()
 
         # swap max item with the last item and "heapify":
-        self.heap[0], self.heap[self.heap_size - 1] = self.heap[self.heap_size - 1], self.heap[0]
+        self.heap[0], self.heap[self.heap_size - 1] = (
+            self.heap[self.heap_size - 1],
+            self.heap[0],
+        )
         self.heap_size -= 1
 
         # make sure that the heap is "heapify"
@@ -72,18 +78,27 @@ class Heap:
         largest_index = index
 
         # looking for the largest (parent or left node)
-        if left_index < self.heap_size and self.heap[left_index] > self.heap[index]:
+        if (
+            left_index < self.heap_size
+            and self.heap[left_index] > self.heap[index]
+        ):
             largest_index = left_index
 
         # if the right child is greater than the left child:
         # largest us the right child
-        if right_index < self.heap_size and self.heap[right_index] > self.heap[largest_index]:
+        if (
+            right_index < self.heap_size
+            and self.heap[right_index] > self.heap[largest_index]
+        ):
             largest_index = right_index
 
         # if the parent is larger than the children: it's a valid heap
         # so we terminate the recursive function calls
         if index != largest_index:
-            self.heap[index], self.heap[largest_index] = self.heap[largest_index], self.heap[index]
+            self.heap[index], self.heap[largest_index] = (
+                self.heap[largest_index],
+                self.heap[index],
+            )
             self.fix_down(largest_index)
 
     def heap_sort(self):
@@ -107,5 +122,5 @@ def main():
     heap.heap_sort()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -8,7 +8,6 @@ class Node:
 
 
 class LinkedList:
-
     def __init__(self):
         self.head = None
         self.number_of_nodes = 0
@@ -75,17 +74,17 @@ def main():
     linked_list = LinkedList()
     linked_list.insert_start(4)
     linked_list.insert_start(3.2)
-    linked_list.insert_start('Test')
+    linked_list.insert_start("Test")
     linked_list.insert_end(10)
     linked_list.insert_end(100)
     linked_list.insert_end(1000)
     linked_list.traverse()
-    print('--------------')
+    print("--------------")
     print(f"Size: {linked_list.number_of_nodes}")
     linked_list.remove(1000)
     print(f"Size: {linked_list.number_of_nodes}")
     linked_list.traverse()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

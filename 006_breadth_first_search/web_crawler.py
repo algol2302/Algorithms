@@ -10,7 +10,6 @@ logger = logging.getLogger(name=__name__)
 
 
 class WebCrawler:
-
     def __init__(self):
         # we want to avoid revisiting the same website over and over
         # again
@@ -41,7 +40,7 @@ class WebCrawler:
     @staticmethod
     def read_raw_html(url: str):
 
-        raw_html = ''
+        raw_html = ""
 
         try:
             raw_html = requests.get(url).text
@@ -53,8 +52,8 @@ class WebCrawler:
 
 def main():
     crawler = WebCrawler()
-    crawler.crawl('https://www.cnn.com')
+    crawler.crawl("https://www.cnn.com")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

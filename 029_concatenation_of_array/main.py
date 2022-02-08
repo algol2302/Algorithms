@@ -15,11 +15,12 @@ class Solution:
         # return nums + nums
         return [*nums, *nums]
 
+
 def main():
-    nums = [1,3,2,1]
+    nums = [1, 3, 2, 1]
     solution = Solution()
     print(solution.getConcatenation(nums))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

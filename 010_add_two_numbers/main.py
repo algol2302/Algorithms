@@ -1,5 +1,3 @@
-
-
 class ListNode:
     """Definition for singly-linked list"""
 
@@ -18,7 +16,6 @@ class ListNode:
 
 
 class NonRecursiveSolution:
-
     @staticmethod
     def list_node2int(list_node: ListNode) -> int:
         next_item = list_node.next
@@ -38,11 +35,12 @@ class NonRecursiveSolution:
         return res
 
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
-        return self.int2list_node(self.list_node2int(l1) + self.list_node2int(l2))
+        return self.int2list_node(
+            self.list_node2int(l1) + self.list_node2int(l2)
+        )
 
 
 class RecursiveSolution:
-
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> [ListNode, None]:
         # the end of recursion
         if l1 is None and l2 is None:
@@ -77,25 +75,34 @@ def main():
     l2 = ListNode(5, ListNode(6, ListNode(4)))
     print(f"Linked lists: {l1}\t{l2}, expected [7,0,8]")
     print(RecursiveSolution().addTwoNumbers(l1=l1, l2=l2))
-    print('-----------------')
+    print("-----------------")
 
     # Example 2:
     # Input: l1 = [0], l2 = [0]
     # Output: [0]
-    l1 = ListNode(0,)
-    l2 = ListNode(0,)
+    l1 = ListNode(
+        0,
+    )
+    l2 = ListNode(
+        0,
+    )
     print(f"Linked lists: {l1}\t{l2}, expected [0]")
     print(RecursiveSolution().addTwoNumbers(l1=l1, l2=l2))
-    print('-----------------')
+    print("-----------------")
 
     # Example 3:
     # Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
     # Output: [8,9,9,9,0,0,0,1]
-    l1 = ListNode(9, ListNode(9, ListNode(9, ListNode(9, ListNode(9, ListNode(9, ListNode(9)))))))
+    l1 = ListNode(
+        9,
+        ListNode(
+            9, ListNode(9, ListNode(9, ListNode(9, ListNode(9, ListNode(9)))))
+        ),
+    )
     l2 = ListNode(9, ListNode(9, ListNode(9, ListNode(9))))
     print(f"Linked lists: {l1}\t{l2}, expected [8,9,9,9,0,0,0,1]")
     print(RecursiveSolution().addTwoNumbers(l1=l1, l2=l2))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

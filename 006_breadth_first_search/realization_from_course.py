@@ -1,5 +1,4 @@
 class Node:
-
     def __init__(self, name):
         self.name = name
         self.adjacency_list = []
@@ -26,7 +25,7 @@ def breadth_first_search(start_node: Node):
                 queue.append(node)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     # we can create the node or vertices
     node1 = Node("A")

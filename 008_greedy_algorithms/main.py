@@ -6,7 +6,7 @@ def main():
         "ktwo": {"wa", "id", "mt"},
         "kthree": {"or", "nv", "са"},
         "kfour": {"nv", "ut"},
-        "kfive": {"ca", "az"}
+        "kfive": {"ca", "az"},
     }
 
     final_stations = set()
@@ -28,5 +28,5 @@ def main():
     print(final_stations)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

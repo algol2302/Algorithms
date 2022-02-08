@@ -1,5 +1,4 @@
 class SelectionSort:
-
     def __init__(self, nums):
         self.nums = nums
 
@@ -7,7 +6,7 @@ class SelectionSort:
 
         # we make N-1 iterations
         # (N-1) * N = (N^2 - N) ~ N^2
-        for i in range(len(self.nums)-1):
+        for i in range(len(self.nums) - 1):
             # linear search and the index stores the index of the min item
             index = i
 
@@ -25,7 +24,6 @@ class SelectionSort:
 
 
 class RecursiveSelectionSort:
-
     def __init__(self, nums):
         self.nums = nums
 
@@ -53,15 +51,18 @@ class RecursiveSelectionSort:
         min_index = self.min_index(start_index, len(self.nums))
 
         if min_index != start_index:
-            self.nums[min_index], self.nums[start_index] = \
-                self.nums[start_index], self.nums[min_index]
+            self.nums[min_index], self.nums[start_index] = (
+                self.nums[start_index],
+                self.nums[min_index],
+            )
 
-        start_index +=1
+        start_index += 1
 
         self.selection_sort(start_index)
 
     def sort(self):
         self.selection_sort()
+
 
 def main():
     # it has O(N^2) running time
@@ -76,5 +77,5 @@ def main():
     print(algorithm.nums)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

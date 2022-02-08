@@ -22,5 +22,5 @@ def main():
     print(reverse_int_1(9087))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

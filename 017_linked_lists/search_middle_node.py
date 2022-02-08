@@ -30,19 +30,19 @@ def main():
     linked_list = LinkedList()
     linked_list.insert_start(4)
     linked_list.insert_start(3.2)
-    linked_list.insert_start('Test')
+    linked_list.insert_start("Test")
     linked_list.insert_end(10)
     linked_list.insert_end(100)
     linked_list.insert_end(1000)
     linked_list.traverse()
     print(f"Size: {linked_list.number_of_nodes}")
     print(f"Middle node: {search_middle_node_0(linked_list)}")
-    print('-------------------------')
+    print("-------------------------")
     # faster approach
     linked_list = OverridenLinkedList()
     linked_list.insert_start(4)
     linked_list.insert_start(3.2)
-    linked_list.insert_start('Test')
+    linked_list.insert_start("Test")
     linked_list.insert_end(10)
     linked_list.insert_end(100)
     linked_list.insert_end(1000)
@@ -51,5 +51,5 @@ def main():
     print(f"Middle node: {linked_list.get_middle_node()}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -45,10 +45,12 @@ def main():
     # operations = ["++X","++X","X++"] -> 3
     # operations = ["X++","++X","--X","X--"] -> 0
     for item in (
-        ["--X", "X++", "X++"], ["++X","++X","X++"], ["X++","++X","--X","X--"]
+        ["--X", "X++", "X++"],
+        ["++X", "++X", "X++"],
+        ["X++", "++X", "--X", "X--"],
     ):
         print(Solution().finalValueAfterOperations_1(item))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

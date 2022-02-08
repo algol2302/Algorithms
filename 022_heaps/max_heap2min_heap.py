@@ -17,18 +17,27 @@ class HeapTransformer:
         largest_index = index
 
         # looking for the min (parent or left node)
-        if left_index < len(self.heap) and self.heap[left_index] < self.heap[index]:
+        if (
+            left_index < len(self.heap)
+            and self.heap[left_index] < self.heap[index]
+        ):
             largest_index = left_index
 
         # if the right child is smaller than the left child:
         # min is the right child
-        if right_index < len(self.heap) and self.heap[right_index] < self.heap[largest_index]:
+        if (
+            right_index < len(self.heap)
+            and self.heap[right_index] < self.heap[largest_index]
+        ):
             largest_index = right_index
 
         # if the parent is larger than the children: it's a valid heap
         # so we terminate the recursive function calls
         if index != largest_index:
-            self.heap[index], self.heap[largest_index] = self.heap[largest_index], self.heap[index]
+            self.heap[index], self.heap[largest_index] = (
+                self.heap[largest_index],
+                self.heap[index],
+            )
             self.fix_down(largest_index)
 
 
@@ -40,5 +49,5 @@ def main():
     print(f"is the min heap: {is_min_heap_optimized(heap_tranform.heap)}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

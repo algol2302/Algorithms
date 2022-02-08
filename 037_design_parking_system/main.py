@@ -21,21 +21,19 @@ Output:
 [null, true, true, false, false]
 """
 
+
 class ParkingSystem:
-    __slots__ = ['places']
+    __slots__ = ["places"]
 
     def __init__(self, big: int, medium: int, small: int):
-        self.places = {
-            1: big,
-            2: medium,
-            3: small
-        }
+        self.places = {1: big, 2: medium, 3: small}
 
     def addCar(self, carType: int) -> bool:
         if self.places[carType]:
             self.places[carType] -= 1
             return True
         return False
+
 
 def main():
     obj = ParkingSystem(1, 1, 0)
@@ -50,5 +48,5 @@ def main():
     assert obj.addCar(3) == True
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

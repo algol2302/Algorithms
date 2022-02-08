@@ -1,5 +1,4 @@
 class ShellSort:
-
     def __init__(self, nums):
         self.nums = nums
 
@@ -15,8 +14,10 @@ class ShellSort:
             for i in range(gap, len(self.nums)):
                 j = i
                 while j >= gap and self.nums[j - gap] > self.nums[j]:
-                    self.nums[j - gap], self.nums[j] = \
-                        self.nums[j], self.nums[j - gap]
+                    self.nums[j - gap], self.nums[j] = (
+                        self.nums[j],
+                        self.nums[j - gap],
+                    )
                     j -= gap
 
             gap = gap // 2
@@ -29,5 +30,5 @@ def main():
     print(algorithm.nums)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

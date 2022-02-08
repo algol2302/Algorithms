@@ -6,7 +6,6 @@ Color = namedtuple("Color", ["RED", "BLACK"])(1, 2)
 
 
 class Node:
-
     def __init__(self, data: Number, parent: Any = None, color=Color.RED):
         self.data = data
         self.left_node = None
@@ -19,7 +18,6 @@ class Node:
 
 
 class RedBlackTree:
-
     def __init__(self):
         self.root = None
 
@@ -104,7 +102,10 @@ class RedBlackTree:
         if temp_right_node.parent and temp_right_node.parent.left_node == node:
             temp_right_node.parent.left_node = temp_right_node
 
-        if temp_right_node.parent and temp_right_node.parent.right_node == node:
+        if (
+            temp_right_node.parent
+            and temp_right_node.parent.right_node == node
+        ):
             temp_right_node.parent.right_node = temp_right_node
 
         # update root
@@ -113,7 +114,11 @@ class RedBlackTree:
 
     def settle_violation(self, node: Node):
 
-        while node != self.root and self.is_red(node) and self.is_red(node.parent):
+        while (
+            node != self.root
+            and self.is_red(node)
+            and self.is_red(node.parent)
+        ):
             parent_node = node.parent
             grand_parent_node = parent_node.parent
 
@@ -192,5 +197,5 @@ def main():
     tree.insert(12)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

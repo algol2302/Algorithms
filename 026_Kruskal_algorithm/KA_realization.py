@@ -14,12 +14,9 @@ class Vertex:
 
 
 class Edge:
-
     def __init__(
-            self,
-            weight: int,
-            start_vertex: Vertex,
-            target_vertex: Vertex):
+        self, weight: int, start_vertex: Vertex, target_vertex: Vertex
+    ):
 
         self.weight = weight
         self.start_vertex = start_vertex
@@ -41,7 +38,6 @@ class Node:
 
 
 class DisjointSet:
-
     def __init__(self, vertex_list: list[Vertex]):
         self.vertex_list = vertex_list
         # these are the root nodes (representatives) of the disjoint sets
@@ -100,7 +96,6 @@ class DisjointSet:
 
 
 class KruskalAlgorithm:
-
     def __init__(self, vertex_list: list[Vertex], edge_list: list[Edge]):
         self.vertex_list = vertex_list
         self.edge_list = edge_list
@@ -127,7 +122,9 @@ class KruskalAlgorithm:
                 disjoint_set.merge(u.node, v.node)
 
         for edge in mst:
-            print(f"{edge.start_vertex.name} - {edge.target_vertex.name} - {edge.weight}")
+            print(
+                f"{edge.start_vertex.name} - {edge.target_vertex.name} - {edge.weight}"
+            )
 
 
 def main():
@@ -155,12 +152,24 @@ def main():
 
     # have to create a list out of these edges and vertices
     vertices = [vertex1, vertex2, vertex3, vertex4, vertex5, vertex6, vertex7]
-    edges = [edge1, edge2, edge3, edge4, edge5, edge6, edge7, edge8, edge9, edge10, edge11]
+    edges = [
+        edge1,
+        edge2,
+        edge3,
+        edge4,
+        edge5,
+        edge6,
+        edge7,
+        edge8,
+        edge9,
+        edge10,
+        edge11,
+    ]
 
     # let's run the algorithm
     algorithm = KruskalAlgorithm(vertices, edges)
     algorithm.find_shortest_path()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

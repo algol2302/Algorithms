@@ -65,17 +65,17 @@ class HashTable:
 def main():
     table = HashTable()
 
-    table.insert('Adam', 23)
-    table.insert('Kevin', 45)
-    table.insert('Daniel', 34)
-    table.insert('Daniel', 34)
-    table.insert('Daniel', 33)
+    table.insert("Adam", 23)
+    table.insert("Kevin", 45)
+    table.insert("Daniel", 34)
+    table.insert("Daniel", 34)
+    table.insert("Daniel", 33)
 
-    print(table.get('Ana'))
-    print(table.get('Adam'))
-    print(table.get('Kevin'))
-    print(table.get('Daniel'))
+    print(table.get("Ana"))
+    print(table.get("Adam"))
+    print(table.get("Kevin"))
+    print(table.get("Daniel"))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

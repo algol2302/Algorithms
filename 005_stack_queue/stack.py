@@ -1,5 +1,6 @@
 # LIFO
 
+
 class Stack:
     def __init__(self):
         self.stack = []
@@ -60,5 +61,5 @@ def main():
     print(stack)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

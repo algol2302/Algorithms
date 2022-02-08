@@ -57,7 +57,7 @@ def check_queue():
     print(f"Add elements {new_items}, result: {queue}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     check_stack()
-    print('--------')
+    print("--------")
     check_queue()

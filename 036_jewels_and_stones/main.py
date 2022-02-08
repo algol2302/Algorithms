@@ -5,6 +5,7 @@ are also jewels.
 Letters are case sensitive, so "a" is considered a different type of stone
 from "A"."""
 
+
 class Solution:
     def numJewelsInStones_0(self, jewels: str, stones: str) -> int:
         """Brute-force"""
@@ -33,6 +34,7 @@ class Solution:
                 counter += 1
         return counter
 
+
 def main():
     jewels = "aA"
     stones = "aAAbbbb"
@@ -40,5 +42,5 @@ def main():
     print(Solution().numJewelsInStones(jewels=jewels, stones=stones))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -1,6 +1,4 @@
-
 class Person:
-
     def __init__(self, name: str, age: int):
         self.name = name
         self.age = age
@@ -10,6 +8,7 @@ class Person:
 
     def __repr__(self):
         return f"{self.name} - {self.age}"
+
 
 def insetion_sort(persons: list[Person]):
     for i in range(len(persons)):
@@ -26,11 +25,11 @@ def insetion_sort(persons: list[Person]):
 
 def main():
     # it has O(N^2) running time
-    persons = [Person('Alex', 10), Person('Bob', 22), Person('Alice', 5)]
+    persons = [Person("Alex", 10), Person("Bob", 22), Person("Alice", 5)]
     insetion_sort(persons)
     for person in persons:
         print(person)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

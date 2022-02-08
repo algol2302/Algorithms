@@ -3,7 +3,6 @@ from typing import Any
 
 
 class Node:
-
     def __init__(self, data: Number, parent: Any):
         self.data = data
         self.left_child = None
@@ -15,7 +14,6 @@ class Node:
 
 
 class BinarySearchTree:
-
     def __init__(self):
         self.root = None
 
@@ -183,5 +181,5 @@ def main():
     bst.traverse()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

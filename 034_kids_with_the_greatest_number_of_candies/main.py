@@ -15,8 +15,7 @@ from typing import List
 
 class Solution:
     def kidsWithCandies(
-            self, candies: List[int],
-            extraCandies: int
+        self, candies: List[int], extraCandies: int
     ) -> List[bool]:
 
         max_value = candies[0]
@@ -33,10 +32,13 @@ class Solution:
 
 
 def main():
-    candies = [2,3,5,1,3]
+    candies = [2, 3, 5, 1, 3]
     extraCandies = 3
 
-    print(Solution().kidsWithCandies(candies=candies, extraCandies=extraCandies))
+    print(
+        Solution().kidsWithCandies(candies=candies, extraCandies=extraCandies)
+    )
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

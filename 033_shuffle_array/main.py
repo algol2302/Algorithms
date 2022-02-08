@@ -13,7 +13,7 @@ class Solution:
     def shuffle_0(self, nums: List[int], n: int) -> List[int]:
         res = []
         for index in range(0, n):
-            res.extend((nums[index], nums[n+index]))
+            res.extend((nums[index], nums[n + index]))
         return res
 
     def shuffle_1(self, nums: List[int], n: int) -> List[int]:
@@ -100,9 +100,9 @@ class Solution:
         #     nums[3], nums[4] = nums[4], nums[3]
         #     nums[5], nums[6] = nums[6], nums[5]
 
-        for idx, i in enumerate(range(n-1, 0, -1), start=1):
-            for j in range(0, 2*idx, 2):
-                nums[i+j], nums[i+j+1] = nums[i+j+1], nums[i+j]
+        for idx, i in enumerate(range(n - 1, 0, -1), start=1):
+            for j in range(0, 2 * idx, 2):
+                nums[i + j], nums[i + j + 1] = nums[i + j + 1], nums[i + j]
         return nums
 
 
@@ -113,5 +113,5 @@ def main():
     print(solution.shuffle(nums, n))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

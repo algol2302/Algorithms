@@ -29,9 +29,9 @@ class Solution:
 
 
 def main():
-    nums = [0,2,1,5,3,4]
+    nums = [0, 2, 1, 5, 3, 4]
     print(Solution().buildArray(nums))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

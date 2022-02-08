@@ -20,11 +20,11 @@ class Solution:
 
 
 def main():
-    accounts = [[1,5],[7,3],[3,5]]
+    accounts = [[1, 5], [7, 3], [3, 5]]
     # [[1,5],[7,3],[3,5]]
     solution = Solution()
     print(solution.maximumWealth(accounts))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

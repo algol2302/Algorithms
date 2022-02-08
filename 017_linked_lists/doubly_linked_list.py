@@ -1,5 +1,4 @@
 class Node:
-
     def __init__(self, data):
         self.data = data
         self.next = None
@@ -7,7 +6,6 @@ class Node:
 
 
 class DoublyLinkedList:
-
     def __init__(self):
         self.head = None
         self.tail = None
@@ -40,12 +38,12 @@ class DoublyLinkedList:
             actual_node = actual_node.previous
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     doubly_linked_list = DoublyLinkedList()
     doubly_linked_list.insert(1)
     doubly_linked_list.insert(2)
     doubly_linked_list.insert(3)
 
     doubly_linked_list.traverse_forward()
-    print('---------')
+    print("---------")
     doubly_linked_list.traverse_backward()

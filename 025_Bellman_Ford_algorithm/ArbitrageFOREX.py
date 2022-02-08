@@ -2,16 +2,14 @@ import math
 
 
 class Node(object):
-
     def __init__(self, name):
         self.name = name
         self.predecessor = None
         self.adjacency_list = []
-        self.min_distance = float('inf')
+        self.min_distance = float("inf")
 
 
 class Edge(object):
-
     def __init__(self, weight, start_vertex, target_vertex):
         self.weight = weight
         self.start_vertex = start_vertex
@@ -19,7 +17,6 @@ class Edge(object):
 
 
 class BellmanFord(object):
-
     def __init__(self, vertex_list, edge_list, start_vertex):
         self.vertex_list = vertex_list
         self.edge_list = edge_list
@@ -31,7 +28,7 @@ class BellmanFord(object):
 
         self.start_vertex.min_distance = 0
 
-        for _ in range(len(self.vertex_list)-1):
+        for _ in range(len(self.vertex_list) - 1):
 
             for edge in self.edge_list:
 
@@ -63,7 +60,10 @@ class BellmanFord(object):
                 return
 
     def check_cycle(self, edge):
-        if edge.start_vertex.min_distance + edge.weight < edge.target_vertex.min_distance:
+        if (
+            edge.start_vertex.min_distance + edge.weight
+            < edge.target_vertex.min_distance
+        ):
             self.has_cycle = True
             return True
         else:
@@ -73,7 +73,9 @@ class BellmanFord(object):
 
         if not self.has_cycle:
 
-            print("Shortest path exists with value: ", target_vertex.min_distance)
+            print(
+                "Shortest path exists with value: ", target_vertex.min_distance
+            )
             node = target_vertex
 
             while node is not None:
@@ -83,7 +85,7 @@ class BellmanFord(object):
             print("No shortest path because of negative cycle...")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     node0 = Node("USD")
     node1 = Node("EUR")
@@ -139,9 +141,26 @@ if __name__ == '__main__':
 
     vertices = (node1, node2, node3, node4)
     edges = (
-        edge1, edge2, edge3, edge4, edge5, edge6, edge7, edge8, edge9, edge10,
-        edge11, edge12, edge13, edge14, edge15, edge16, edge17, edge18, edge19,
-        edge20
+        edge1,
+        edge2,
+        edge3,
+        edge4,
+        edge5,
+        edge6,
+        edge7,
+        edge8,
+        edge9,
+        edge10,
+        edge11,
+        edge12,
+        edge13,
+        edge14,
+        edge15,
+        edge16,
+        edge17,
+        edge18,
+        edge19,
+        edge20,
     )
 
     algorithm = BellmanFord(vertices, edges, node1)

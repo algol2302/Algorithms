@@ -20,7 +20,10 @@ def is_min_heap_optimized(heap: list) -> bool:
     num_items = (len(heap) - 2) // 2
     # i: 2*i+1=l 2i*2+2=r => i = (l-1)/2 = (r-2)/2
     for index in range(num_items):
-        if heap[index] > heap[2 * index + 1] or heap[index] > heap[2 * index + 2]:
+        if (
+            heap[index] > heap[2 * index + 1]
+            or heap[index] > heap[2 * index + 2]
+        ):
             return False
 
     return True
@@ -40,5 +43,5 @@ def main():
     assert is_min_heap_optimized(is_not_min_heap) == False
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

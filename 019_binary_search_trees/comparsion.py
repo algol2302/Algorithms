@@ -8,7 +8,9 @@ def compare_trees(node_1: Node, node_2: Node) -> bool:
     if node_1.data != node_2.data:
         return False
 
-    return compare_trees(node_1.left_child, node_2.left_child) and compare_trees(node_1.right_child, node_2.right_child)
+    return compare_trees(
+        node_1.left_child, node_2.left_child
+    ) and compare_trees(node_1.right_child, node_2.right_child)
 
 
 def main():
@@ -30,9 +32,13 @@ def main():
     bst_2.insert(34)
     bst_2.insert(1000)
 
-    relation = "is the same as" if compare_trees(bst_1.root, bst_2.root) else "isn't the same as"
+    relation = (
+        "is the same as"
+        if compare_trees(bst_1.root, bst_2.root)
+        else "isn't the same as"
+    )
     print(f"Comparison: bst_1 {relation} bst2")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

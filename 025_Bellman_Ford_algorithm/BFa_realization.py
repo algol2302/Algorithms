@@ -1,29 +1,24 @@
 class Edge:
-
-    def __init__(
-        self, weight: int, start_vertex, target_vertex
-    ) -> None:
+    def __init__(self, weight: int, start_vertex, target_vertex) -> None:
         self.weight = weight
         self.start_vertex = start_vertex
         self.target_vertex = target_vertex
 
 
 class Node:
-
     def __init__(self, name: str):
         self.name = name
         self.adjacency_list = []
         self.predecessor = None
-        self.min_distance = float('inf')
+        self.min_distance = float("inf")
 
 
 class BellmanFordAlgorithm:
-
     def __init__(
         self,
         vertex_list: list[Node],
         edge_list: list[Edge],
-        start_vertex: Node
+        start_vertex: Node,
     ) -> None:
         self.vertex_list = vertex_list
         self.edge_list = edge_list
@@ -35,7 +30,7 @@ class BellmanFordAlgorithm:
 
         # so we consider V-1 iterations
         # final running time is O(V*N)
-        for _ in range(len(self.vertex_list)-1):
+        for _ in range(len(self.vertex_list) - 1):
 
             # in every iteration we consider all edges:
             for edge in self.edge_list:
@@ -58,7 +53,10 @@ class BellmanFordAlgorithm:
     def check_cycle(self, edge: Edge):
         # if the total cost (min distance) of the given vertex decreases
         # after V-1 iteration, it means there is a negative cycle graph
-        if edge.start_vertex.min_distance + edge.weight < edge.target_vertex.min_distance:
+        if (
+            edge.start_vertex.min_distance + edge.weight
+            < edge.target_vertex.min_distance
+        ):
             self.has_cycle = True
             return True
         else:
@@ -117,12 +115,25 @@ def main():
 
     # run the algorithm
     vertices = (node1, node2, node3, node4, node5, node6, node7)
-    edges = (edge1, edge2, edge3, edge4, edge5, edge6, edge7, edge8, edge9, edge10, edge11, edge12)
+    edges = (
+        edge1,
+        edge2,
+        edge3,
+        edge4,
+        edge5,
+        edge6,
+        edge7,
+        edge8,
+        edge9,
+        edge10,
+        edge11,
+        edge12,
+    )
 
     algorithm = BellmanFordAlgorithm(vertices, edges, node1)
     algorithm.find_shortest_path()
     algorithm.get_shortest_path(node7)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -3,7 +3,6 @@ from typing import Any
 
 
 class Node:
-
     def __init__(self, data: Number, parent: Any):
         self.data = data
         self.left_child = None
@@ -25,7 +24,6 @@ class Node:
 
 
 class AVLTree:
-
     def __init__(self):
         # we can access the root node exclusively
         self.root = None
@@ -44,19 +42,25 @@ class AVLTree:
                 self.insert_node(data, node.left_child)
             else:
                 node.left_child = Node(data, node)
-                node.height = max(
-                    self.calculate_height(node.left_child),
-                    self.calculate_height(node.right_child)
-                ) + 1
+                node.height = (
+                    max(
+                        self.calculate_height(node.left_child),
+                        self.calculate_height(node.right_child),
+                    )
+                    + 1
+                )
         else:
             if node.right_child:
                 self.insert_node(data, node.right_child)
             else:
                 node.right_child = Node(data, node)
-                node.height = max(
-                    self.calculate_height(node.left_child),
-                    self.calculate_height(node.right_child)
-                ) + 1
+                node.height = (
+                    max(
+                        self.calculate_height(node.left_child),
+                        self.calculate_height(node.right_child),
+                    )
+                    + 1
+                )
 
         # after every insertion we have to check tree balance
         self.handle_violation(node)
@@ -145,10 +149,13 @@ class AVLTree:
     def handle_violation(self, node: Node):
         # check the nodes from the node we have inserted up to root node
         while node:
-            node.height = max(
-                self.calculate_height(node.left_child),
-                self.calculate_height(node.right_child)
-            ) + 1
+            node.height = (
+                max(
+                    self.calculate_height(node.left_child),
+                    self.calculate_height(node.right_child),
+                )
+                + 1
+            )
             self.violation_helper(node)
             node = node.parent
 
@@ -186,7 +193,9 @@ class AVLTree:
         if not node:
             return 0
 
-        return self.calculate_height(node.left_child) - self.calculate_height(node.right_child)
+        return self.calculate_height(node.left_child) - self.calculate_height(
+            node.right_child
+        )
 
     def rotate_left(self, node: Node):
         print(f"Rotating to the left on {node}")
@@ -204,10 +213,16 @@ class AVLTree:
         node.parent, temp_right_child.parent = temp_right_child, node.parent
 
         # update childs for ex parent of the node
-        if temp_right_child.parent and temp_right_child.parent.left_child == node:
+        if (
+            temp_right_child.parent
+            and temp_right_child.parent.left_child == node
+        ):
             temp_right_child.parent.left_child = temp_right_child
 
-        if temp_right_child.parent and temp_right_child.parent.right_child == node:
+        if (
+            temp_right_child.parent
+            and temp_right_child.parent.right_child == node
+        ):
             temp_right_child.parent.right_child = temp_right_child
 
         # case node is root
@@ -215,14 +230,20 @@ class AVLTree:
             self.root = temp_right_child
 
         # recalculate heights
-        node.height = max(
-            self.calculate_height(node.left_child),
-            self.calculate_height(node.right_child)
-        ) + 1
-        temp_right_child.height = max(
-            self.calculate_height(temp_right_child.left_child),
-            self.calculate_height(temp_right_child.right_child)
-        ) + 1
+        node.height = (
+            max(
+                self.calculate_height(node.left_child),
+                self.calculate_height(node.right_child),
+            )
+            + 1
+        )
+        temp_right_child.height = (
+            max(
+                self.calculate_height(temp_right_child.left_child),
+                self.calculate_height(temp_right_child.right_child),
+            )
+            + 1
+        )
 
     def rotate_right(self, node: Node):
         print(f"Rotating to the right on {node}")
@@ -240,10 +261,16 @@ class AVLTree:
         node.parent, temp_left_child.parent = temp_left_child, node.parent
 
         # update childs for ex parent of the node
-        if temp_left_child.parent and temp_left_child.parent.left_child == node:
+        if (
+            temp_left_child.parent
+            and temp_left_child.parent.left_child == node
+        ):
             temp_left_child.parent.left_child = temp_left_child
 
-        if temp_left_child.parent and temp_left_child.parent.right_child == node:
+        if (
+            temp_left_child.parent
+            and temp_left_child.parent.right_child == node
+        ):
             temp_left_child.parent.right_child = temp_left_child
 
         # update root
@@ -251,14 +278,20 @@ class AVLTree:
             self.root = temp_left_child
 
         # recalculate heights
-        node.height = max(
-            self.calculate_height(node.left_child),
-            self.calculate_height(node.right_child)
-        ) + 1
-        temp_left_child.height = max(
-            self.calculate_height(temp_left_child.left_child),
-            self.calculate_height(temp_left_child.right_child)
-        ) + 1
+        node.height = (
+            max(
+                self.calculate_height(node.left_child),
+                self.calculate_height(node.right_child),
+            )
+            + 1
+        )
+        temp_left_child.height = (
+            max(
+                self.calculate_height(temp_left_child.left_child),
+                self.calculate_height(temp_left_child.right_child),
+            )
+            + 1
+        )
 
     def traverse(self) -> None:
         if self.root:
@@ -300,5 +333,5 @@ def main():
     avl.traverse()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

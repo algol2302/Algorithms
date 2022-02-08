@@ -2,7 +2,6 @@
 
 
 class Queue:
-
     def __init__(self):
         self.queue = []
 
@@ -44,5 +43,5 @@ def main():
     print(f"Size: {queue.size_queue()}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

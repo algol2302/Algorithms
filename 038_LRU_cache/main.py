@@ -24,6 +24,7 @@ class LRUCache0:
 
     def __call__(self, func):
         decorator_self = self
+
         @wraps(func)
         def wrapper(key):
             # we suppose that a function will have just one argument
@@ -105,62 +106,67 @@ class LRUCache1:
             decorator_self._insert(node)
 
             return result
+
         return wrapper
 
     def __repr__(self):
         return f"<LRU({self.capacity}): {self.cache!s}>"
 
+
 def fib_slow(n):
     if n < 2:
         # print(n)
         return n
-    res = fib_slow(n-1) + fib_slow(n-2)
+    res = fib_slow(n - 1) + fib_slow(n - 2)
     # print(res)
     return res
+
 
 @LRUCache0(capacity=38)
 def fib_0(n):
     if n < 2:
         # print(n)
         return n
-    res = fib_0(n-1) + fib_0(n-2)
+    res = fib_0(n - 1) + fib_0(n - 2)
     # print(res)
     return res
+
 
 @LRUCache1(capacity=38)
 def fib_1(n):
     if n < 2:
         # print(n)
         return n
-    res = fib_1(n-1) + fib_1(n-2)
+    res = fib_1(n - 1) + fib_1(n - 2)
     # print(res)
     return res
+
 
 @lru_cache
 def fib(n):
     if n < 2:
         # print(n)
         return n
-    res = fib(n-1) + fib(n-2)
+    res = fib(n - 1) + fib(n - 2)
     # print(res)
     return res
 
 
 def main():
     # tests LRUCache0:
-    print('tests LRUCache0:')
+    print("tests LRUCache0:")
     cache = LRUCache0(capacity=2)
-    cache['a'] = 'a'
-    cache['b'] = 'b'
-    print(cache, cache['a'])
-    cache['c'] = 'c'
+    cache["a"] = "a"
+    cache["b"] = "b"
+    print(cache, cache["a"])
+    cache["c"] = "c"
     try:
-        print(cache, cache['a'])
+        print(cache, cache["a"])
     except KeyError as exc:
-        print(cache, 'there is not a')
+        print(cache, "there is not a")
 
-    print('-------------------')
-    print('test lru_cache_0 decorator:')
+    print("-------------------")
+    print("test lru_cache_0 decorator:")
     # test lru_cache_0:
     t0 = time.time()
     fib_slow(38)
@@ -182,5 +188,6 @@ def main():
     t1 = time.time()
     print(f"Built-in LRU cached fib: {t1 - t0} sec")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

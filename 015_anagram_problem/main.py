@@ -27,7 +27,7 @@ def is_anagram(origin: str, possible_anagram: str):
     return True
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
-    print(is_anagram('restful', 'fluster'))
-    print(is_anagram('restful', 'fruster'))
+    print(is_anagram("restful", "fluster"))
+    print(is_anagram("restful", "fruster"))

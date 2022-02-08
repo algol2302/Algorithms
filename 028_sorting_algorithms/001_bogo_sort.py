@@ -2,13 +2,12 @@ import random
 
 
 class BogoSort:
-
     def __init__(self, nums):
         self.nums = nums
 
     def is_sorted(self):
         for i in range(len(self.nums) - 1):
-            if self.nums[i] > self.nums[i+1]:
+            if self.nums[i] > self.nums[i + 1]:
                 return False
 
         return True
@@ -20,9 +19,8 @@ class BogoSort:
         """
 
         for i in range(len(self.nums) - 2, -1, -1):
-            j = random.randint(0, i+1)
+            j = random.randint(0, i + 1)
             self.nums[i], self.nums[j] = self.nums[j], self.nums[i]
-
 
     def sort(self):
 
@@ -39,5 +37,5 @@ def main():
     print(algorithm.nums)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

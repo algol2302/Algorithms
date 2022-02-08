@@ -2,7 +2,6 @@ import sys
 
 
 class DijkstraAlgorithm:
-
     def __init__(self, adjacency_matrix, start_vertex):
         self.adjacency_matrix = adjacency_matrix
         self.start_vertex = start_vertex
@@ -20,8 +19,8 @@ class DijkstraAlgorithm:
         # this is why to use heap data structure instead - O(logN)
         for index in range(self.v):
             if (
-                not self.visited[index] and
-                self.distances[index] < min_vertex_value
+                not self.visited[index]
+                and self.distances[index] < min_vertex_value
             ):
 
                 min_vertex_value = self.distances[index]
@@ -51,7 +50,9 @@ class DijkstraAlgorithm:
                     ):
                         self.distances[other_vertex] = (
                             self.distances[actual_vertex]
-                            + self.adjacency_matrix[actual_vertex][other_vertex]
+                            + self.adjacency_matrix[actual_vertex][
+                                other_vertex
+                            ]
                         )
 
     def print_distances(self):
@@ -59,17 +60,19 @@ class DijkstraAlgorithm:
 
 
 def main():
-    m = [[0, 7, 5, 2, 0, 0],
-         [7, 0, 0, 0, 3, 8],
-         [5, 0, 0, 10, 4, 0],
-         [2, 0, 10, 0, 0, 2],
-         [0, 3, 4, 0, 0, 6],
-         [0, 8, 0, 2, 6, 0]]
+    m = [
+        [0, 7, 5, 2, 0, 0],
+        [7, 0, 0, 0, 3, 8],
+        [5, 0, 0, 10, 4, 0],
+        [2, 0, 10, 0, 0, 2],
+        [0, 3, 4, 0, 0, 6],
+        [0, 8, 0, 2, 6, 0],
+    ]
 
     algorithm = DijkstraAlgorithm(m, 1)
     algorithm.calculate()
     algorithm.print_distances()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

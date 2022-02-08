@@ -7,7 +7,7 @@ def lengthOfLongestSubstring1(s: str) -> int:
 
         if char in current:
             first_index = current.index(char)
-            current = current[first_index+1:]
+            current = current[first_index + 1 :]
 
         current.append(char)
 
@@ -20,12 +20,12 @@ def lengthOfLongestSubstring2(s: str) -> int:
     """Sliding window solution with index detection via hashmap"""
 
     max_length = 0
-    current = ''
+    current = ""
     items = {}
 
     for index, char in enumerate(s):
         if char in current:
-            current = s[items[char]+1:index]
+            current = s[items[char] + 1 : index]
 
         items[char] = index
         current += char
@@ -75,5 +75,5 @@ def main():
     print(f"{s=}\t\tgot: {lengthOfLongestSubstring(s)} expected: 6")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

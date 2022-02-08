@@ -5,19 +5,15 @@ E = TypeVar("E", bound="Edge")
 
 
 class Vertex:
-
     def __init__(self, name: str):
         self.name = name
         self.adjacency_list = []
 
 
 class Edge:
-
     def __init__(
-            self,
-            weight: int,
-            start_vertex: Vertex,
-            target_vertex: Vertex):
+        self, weight: int, start_vertex: Vertex, target_vertex: Vertex
+    ):
 
         self.weight = weight
         self.start_vertex = start_vertex
@@ -28,7 +24,6 @@ class Edge:
 
 
 class PrimsJarnikAlgorithm:
-
     def __init__(self, unvisited_list):
         # this is how we track how many vertices we have considered so
         # far of len(unvisited_list) = 0
@@ -111,7 +106,15 @@ def main():
     edgeFG = Edge(5, vertexF, vertexG)
     edgeGF = Edge(5, vertexG, vertexF)
 
-    unvisited_list = [vertexA, vertexB, vertexC, vertexD, vertexE, vertexF, vertexG]
+    unvisited_list = [
+        vertexA,
+        vertexB,
+        vertexC,
+        vertexD,
+        vertexE,
+        vertexF,
+        vertexG,
+    ]
 
     vertexA.adjacency_list.append(edgeAB)
     vertexA.adjacency_list.append(edgeAC)
@@ -142,5 +145,5 @@ def main():
     print(algorithm.get_total_cost())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

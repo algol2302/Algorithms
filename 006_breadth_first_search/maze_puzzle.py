@@ -4,13 +4,14 @@ from collections import deque
 
 
 class MazeSolver:
-
     def __init__(self, matrix):
         self.matrix = matrix
         # R(1,0) D(0,-1) U(0,1) L(-1,0)
         self.move = ((1, 0), (0, -1), (0, 1), (-1, 0))
-        self.visited = [[False for _ in range(len(matrix))] for _ in range(len(matrix))]
-        self.min_distance = float('inf')
+        self.visited = [
+            [False for _ in range(len(matrix))] for _ in range(len(matrix))
+        ]
+        self.min_distance = float("inf")
 
     def is_valid(self, row, col):
 
@@ -67,20 +68,23 @@ class MazeSolver:
                     queue.append((next_x, next_y, dist + 1))
 
     def show_result(self):
-        if self.min_distance != float('inf'):
-            print("The shortest path from source to destination: ", self.min_distance)
+        if self.min_distance != float("inf"):
+            print(
+                "The shortest path from source to destination: ",
+                self.min_distance,
+            )
         else:
             print("No feasible solution - the destination can not be reached!")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     m = [
         [1, 1, 1, 1, 1],
         [0, 0, 0, 0, 1],
         [1, 1, 1, 1, 1],
         [1, 0, 0, 0, 0],
-        [1, 1, 1, 1, 1]
+        [1, 1, 1, 1, 1],
     ]
 
     maze_solver = MazeSolver(m)

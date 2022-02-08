@@ -9,7 +9,6 @@ class Edge:
 
 
 class Node:
-
     def __init__(self, name):
         self.name = name
         self.visited = False
@@ -24,7 +23,6 @@ class Node:
 
 
 class DijkstraAlgorithm:
-
     def __init__(self):
         # this is the heap representation (binary heap)
         self.heap = []
@@ -132,5 +130,5 @@ def main():
     algorithm.get_shortest_path(node6)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

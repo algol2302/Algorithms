@@ -2,12 +2,11 @@ from collections import deque
 
 
 class QuickSort:
-
     def __init__(self, data):
         self.data = data
 
     def sort(self):
-        self.quick_sort(0, len(self.data)-1)
+        self.quick_sort(0, len(self.data) - 1)
 
     # low is the index of the first item
     # high is the index of the last item
@@ -18,9 +17,9 @@ class QuickSort:
 
         pivot_index = self.partition(low, high)
         # call the function recursively on the left array:
-        self.quick_sort(low, pivot_index-1)
+        self.quick_sort(low, pivot_index - 1)
         # call the function recursively on the right array:
-        self.quick_sort(pivot_index+1, high)
+        self.quick_sort(pivot_index + 1, high)
 
     # this is the magic happens
     # in O(N) running time complexity
@@ -31,8 +30,10 @@ class QuickSort:
         pivot_index = (low + high) // 2
 
         # swap items:
-        self.data[pivot_index], self.data[high] = \
-            self.data[high], self.data[pivot_index]
+        self.data[pivot_index], self.data[high] = (
+            self.data[high],
+            self.data[pivot_index],
+        )
 
         # consider all the other items and compare them with the pivot
         for j in range(low, high):
@@ -49,7 +50,6 @@ class QuickSort:
 
 
 class QuickSortNonRecursive:
-
     def __init__(self, data):
         self.data = data
 
@@ -88,8 +88,10 @@ class QuickSortNonRecursive:
         pivot_index = (low + high) // 2
 
         # swap items:
-        self.data[pivot_index], self.data[high] = \
-            self.data[high], self.data[pivot_index]
+        self.data[pivot_index], self.data[high] = (
+            self.data[high],
+            self.data[pivot_index],
+        )
 
         # consider all the other items and compare them with the pivot
         for j in range(low, high):
@@ -104,16 +106,17 @@ class QuickSortNonRecursive:
         # return the index the pivot
         return low
 
+
 def main():
     # it has O(NxlogN) running time
     algorithm = QuickSort([1, -1, 0, 10, 12, -5, 1, 2, -1, 34])
     algorithm.sort()
     print(algorithm.data)
-    print('------------------------------')
+    print("------------------------------")
     algorithm = QuickSortNonRecursive([1, -1, 0, 10, 12, -5, 1, 2, -1, 34])
     algorithm.sort()
     print(algorithm.data)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -1,5 +1,4 @@
 class MergeSort:
-
     def __init__(self, nums):
         self.nums = nums
 
@@ -59,5 +58,5 @@ def main():
     print(algorithm.nums)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
