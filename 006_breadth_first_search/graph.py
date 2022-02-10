@@ -1,5 +1,5 @@
-from typing import Any
 from pprint import pprint
+from typing import Any
 
 
 class Graph:

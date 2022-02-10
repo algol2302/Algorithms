@@ -1,5 +1,5 @@
-from numbers import Number
 from typing import Any
+from numbers import Number
 
 
 class Node:

@@ -1,4 +1,4 @@
-from realization import BinarySearchTree, Node
+from realization import Node, BinarySearchTree
 
 
 def compare_trees(node_1: Node, node_2: Node) -> bool:

@@ -1,4 +1,4 @@
-from main import LinkedList, Node
+from main import Node, LinkedList
 
 
 class OverridenLinkedList(LinkedList):

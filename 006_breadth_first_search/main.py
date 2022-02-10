@@ -1,6 +1,5 @@
-from collections import deque
 from pprint import pprint
-
+from collections import deque
 
 graph = {
     "you": ["alice", "bob", "claire"],

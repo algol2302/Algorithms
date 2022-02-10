@@ -1,6 +1,6 @@
 import time
+from functools import wraps, lru_cache
 from collections import OrderedDict
-from functools import lru_cache, wraps
 
 
 class LRUCache0:
