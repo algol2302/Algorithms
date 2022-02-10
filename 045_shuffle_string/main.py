@@ -9,11 +9,23 @@ from typing import List
 
 class Solution:
     def restoreString(self, s: str, indices: List[int]) -> str:
-        pass
+        values = [""] * len(s)
+        for i in range(len(s)):
+            values[indices[i]] = s[i]
+        return "".join(values)
 
 
 def main():
-    pass
+    solution = Solution()
+
+    print(
+        solution.restoreString(s="codeleet", indices=[4, 5, 6, 7, 0, 2, 1, 3]),
+        "leetcode",
+    )
+    print(
+        solution.restoreString(s="abc", indices=[0, 1, 2]),
+        "abc",
+    )
 
 
 if __name__ == "__main__":
