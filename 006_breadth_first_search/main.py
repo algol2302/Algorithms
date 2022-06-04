@@ -1,6 +1,5 @@
-from collections import deque
 from pprint import pprint
-
+from collections import deque
 
 graph = {
     "you": ["alice", "bob", "claire"],
@@ -10,12 +9,12 @@ graph = {
     "anuj": [],
     "peggy": [],
     "thom": [],
-    "jonny": []
+    "jonny": [],
 }
 
 
 def person_is_seller(name):
-    return name[-1] == 'm'
+    return name[-1] == "m"
 
 
 def search(name):
@@ -35,6 +34,6 @@ def search(name):
     return False
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     pprint(graph)
     search("you")

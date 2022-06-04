@@ -15,7 +15,7 @@ def recursive_count(arr: list) -> int:
 
 def recursive_max(arr: list) -> int:
     if len(arr) == 0:
-        raise ValueError('recursive_max() arg is an empty sequence')
+        raise ValueError("recursive_max() arg is an empty sequence")
 
     if len(arr) == 1:
         return arr[0]
@@ -35,7 +35,7 @@ def quick_sort(arr: list):
         return quick_sort(arr=less) + [pivot] + quick_sort(arr=greater)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     init_arr = [random.randint(0, 1000) for _ in range(10)]
 
     total_sum = recursive_sum(init_arr)

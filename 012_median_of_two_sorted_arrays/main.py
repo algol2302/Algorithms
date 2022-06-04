@@ -47,21 +47,21 @@ def findMedianSortedArrays(A: List[int], B: List[int]) -> float:
     while imin <= imax:
         i = int((imin + imax) / 2)
         j = half_len - i
-        if i < m and B[j-1] > A[i]:
+        if i < m and B[j - 1] > A[i]:
             # i is too small, must increase it
             imin = i + 1
-        elif i > 0 and A[i-1] > B[j]:
+        elif i > 0 and A[i - 1] > B[j]:
             # i is too big, must decrease it
             imax = i - 1
         else:
             # i is perfect
 
             if i == 0:
-                max_of_left = B[j-1]
+                max_of_left = B[j - 1]
             elif j == 0:
-                max_of_left = A[i-1]
+                max_of_left = A[i - 1]
             else:
-                max_of_left = max(A[i-1], B[j-1])
+                max_of_left = max(A[i - 1], B[j - 1])
 
             if (m + n) % 2 == 1:
                 return max_of_left
@@ -79,9 +79,11 @@ def findMedianSortedArrays(A: List[int], B: List[int]) -> float:
 def main():
     nums1 = [1, 3]
     nums2 = [2]
-    print(f"got: {findMedianSortedArrays(A=nums1, B=nums2)}, expected: {2.00000}")
+    print(
+        f"got: {findMedianSortedArrays(A=nums1, B=nums2)}, expected: {2.00000}"
+    )
     print("--------------------------")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

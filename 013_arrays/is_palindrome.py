@@ -28,5 +28,5 @@ def main():
     print(is_palindrome("cabin"))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

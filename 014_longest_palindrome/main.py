@@ -1,7 +1,7 @@
 def longestPalindrome_0(s: str) -> str:
     """Brute force solution"""
 
-    palindrom = ''
+    palindrom = ""
 
     for i, char_i in enumerate(s):
         current = char_i
@@ -9,7 +9,10 @@ def longestPalindrome_0(s: str) -> str:
         if len(palindrom) < len(current) and current == current[::-1]:
             palindrom = current
 
-        for j, char_j, in enumerate(s[i+1:]):
+        for (
+            j,
+            char_j,
+        ) in enumerate(s[i + 1 :]):
             current += char_j
 
             if len(palindrom) < len(current) and current == current[::-1]:
@@ -36,7 +39,7 @@ def longestPalindrome_1(s: str) -> str:
     for i in range(0, length_s):
         current = s[i]
 
-        for j, char_j in enumerate(s[i+1:]):
+        for j, char_j in enumerate(s[i + 1 :]):
             current += char_j
             length_current = len(current)
 
@@ -60,7 +63,7 @@ def longestPalindrome_2(s: str) -> str:
     for i in range(0, length_s):
         current = s[i]
 
-        for j, char_j in enumerate(s[i+1:]):
+        for j, char_j in enumerate(s[i + 1 :]):
             current += char_j
             length_current = len(current)
 
@@ -86,7 +89,7 @@ def longestPalindrome_3(s: str) -> str:
     for i in range(0, length_s):
         current = s[i]
 
-        for char_j in s[i+1:]:
+        for char_j in s[i + 1 :]:
             current += char_j
 
             try:
@@ -144,7 +147,7 @@ def longestPalindrome_5(s: str) -> str:
         if max_len > end - start + 1:
             start = i - (max_len - 1) // 2
             end = i + max_len // 2
-    return s[start: end + 1]
+    return s[start : end + 1]
 
 
 def longestPalindrome(s: str) -> str:
@@ -161,12 +164,12 @@ def longestPalindrome(s: str) -> str:
     start = finish = 0
 
     for i in range(length):
-        max_len = max(_get_max_length(i, i+1), _get_max_length(i, i))
+        max_len = max(_get_max_length(i, i + 1), _get_max_length(i, i))
         if max_len > finish - start + 1:
             start = i - (max_len - 1) // 2
             finish = i + max_len // 2
 
-    return s[start:finish+1]
+    return s[start : finish + 1]
 
 
 def main():
@@ -176,5 +179,5 @@ def main():
     print(f'got: {longestPalindrome("ac")}, expected: a')
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

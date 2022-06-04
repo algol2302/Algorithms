@@ -1,5 +1,5 @@
-from typing import Any
 from pprint import pprint
+from typing import Any
 
 
 class Graph:
@@ -15,7 +15,7 @@ class Graph:
         return {
             "name": self.name,
             "is_mango_seller": self.is_mango_seller,
-            "friends": self.friends
+            "friends": self.friends,
         }
 
     def __repr__(self):
@@ -26,22 +26,10 @@ graph2 = Graph(
     name="you",
     is_mango_seller=False,
     friends=(
-        Graph(
-            name="alice",
-            is_mango_seller=False,
-            friends=None
-        ),
-        Graph(
-            name="bob",
-            is_mango_seller=False,
-            friends=None
-        ),
-        Graph(
-            name="claire",
-            is_mango_seller=False,
-            friends=None
-        )
-    )
+        Graph(name="alice", is_mango_seller=False, friends=None),
+        Graph(name="bob", is_mango_seller=False, friends=None),
+        Graph(name="claire", is_mango_seller=False, friends=None),
+    ),
 )
 
 pprint(graph2._as_dict())

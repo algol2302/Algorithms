@@ -19,7 +19,9 @@ def two_sum_optimized_1(nums: List[int], target: int) -> List[int]:
     """First optimization"""
 
     for first_index, first in enumerate(nums):
-        for second_index, second in enumerate(nums[first_index+1:], start=first_index+1):
+        for second_index, second in enumerate(
+            nums[first_index + 1 :], start=first_index + 1
+        ):
             if target - first == second:
                 return [first_index, second_index]
 
@@ -50,7 +52,7 @@ def main():
     print(two_sum_optimized_1([3, 3], 6))
     print(two_sum_optimized_1([1, 3, 4, 2], 6))
 
-    print('--------')
+    print("--------")
 
     print(two_sum_optimized_2([2, 7, 11, 15], 9))
     print(two_sum_optimized_2([3, 2, 4], 6))
@@ -58,5 +60,5 @@ def main():
     print(two_sum_optimized_2([1, 3, 4, 2], 6))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
