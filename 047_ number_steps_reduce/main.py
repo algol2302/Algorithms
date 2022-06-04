@@ -21,9 +21,7 @@ class Solution:
 
 
 def main():
-    print(
-        Solution().numberOfSteps1(num=14), 6
-    )
+    print(Solution().numberOfSteps1(num=14), 6)
     print(Solution().numberOfSteps1(num=8), 4)
     print(Solution().numberOfSteps1(num=123), 12)
 
